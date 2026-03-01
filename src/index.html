@@ -87,7 +87,7 @@
                                 <option value="Paracetamol">Paracetamol</option>
                                 <option value="Amoxicillin">Amoxicillin</option>
                                 <option value="Vitamin C">Vitamin C</option>
-                                <option value="OBH">OBH Sirup</option>
+                                <option value="OBH Sirup">OBH Sirup</option>
                             </select>
                             <label for="pilihObat"><i class="bi bi-box-seam me-1"></i> Pilih Obat</label>
                         </div>
@@ -164,21 +164,23 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalSukses" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modalPeringatan" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow-lg">
                 <div class="modal-body p-5 text-center">
                     <div class="mb-4">
-                        <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+                        <i class="bi bi-exclamation-triangle-fill text-warning" style="font-size: 5rem;"></i>
                     </div>
-                    <h3 class="fw-bold mb-2">Transaksi Berhasil!</h3>
-                    <p class="text-muted mb-4">Terima kasih, data telah tercatat di sistem MediPOS.</p>
-                    <button type="button" class="btn btn-light px-5 py-2 fw-medium rounded-pill border" data-bs-dismiss="modal" id="btnTutupModal">Tutup & Pesan Baru</button>
+                    <h3 class="fw-bold mb-2">Oops, Data Belum Lengkap!</h3>
+                    <p class="text-muted mb-4">Mohon isi nama pelanggan, pilih obat, dan masukkan jumlah yang benar.</p>
+                    <button type="button" class="btn btn-warning px-5 py-2 fw-medium rounded-pill text-white shadow-sm" data-bs-dismiss="modal">Mengerti</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
