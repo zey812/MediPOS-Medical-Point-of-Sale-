@@ -25,39 +25,30 @@ btnTambah.addEventListener("click", function() {
         return; 
     }
     
-displayNama.innerText = inputNama.value;
+    displayNama.innerText = inputNama.value;
+    inputNama.disabled = true; 
+
     const obatPilihan = dataObat.find(obat => obat.nama === selectObat.value);
     const jumlah = parseInt(inputJumlah.value);
-    const subtotalItem = obatPilihan.harga * jumlah;
 
-    keranjang.push({
-        nama: obatPilihan.nama, harga: obatPilihan.harga, jumlah: jumlah, subtotal: subtotalItem
-    });
+    const itemSudahAda = keranjang.find(item => item.nama === obatPilihan.nama);
 
-    selectObat.value = ""; inputJumlah.value = "";
+    if (itemSudahAda) {
+        itemSudahAda.jumlah += jumlah;
+        itemSudahAda.subtotal = itemSudahAda.jumlah * itemSudahAda.harga;
+    } else {
+        keranjang.push({
+            nama: obatPilihan.nama, 
+            harga: obatPilihan.harga, 
+            jumlah: jumlah, 
+            subtotal: obatPilihan.harga * jumlah
+        });
+    }
+
+    selectObat.value = ""; 
+    inputJumlah.value = "";
     renderKeranjang();
 });
-
-function renderKeranjang() {
-    tbodyTransaksi.innerHTML = ""; 
-    let subtotalSeluruh = 0;
-
-    keranjang.forEach((item) => {
-        subtotalSeluruh += item.subtotal;
-        tbodyTransaksi.innerHTML += `
-            <tr>
-                <td class="text-start fw-medium">${item.nama}</td>
-                <td>${formatRupiah(item.harga)}</td>
-                <td>${item.jumlah}</td>
-                <td class="fw-bold">${formatRupiah(item.subtotal)}</td>
-                <td><button class="btn btn-sm btn-outline-success disabled"><i class="bi bi-check"></i></button></td>
-            </tr>
-        `;
-    });
-
-    textSubtotal.innerText = formatRupiah(subtotalSeluruh);
-    textTotal.innerText = formatRupiah(subtotalSeluruh);
-}
 
 function renderKeranjang() {
     tbodyTransaksi.innerHTML = ""; 
@@ -84,7 +75,6 @@ function renderKeranjang() {
     let totalAkhir = subtotalSeluruh - diskon;
 
     textSubtotal.innerText = formatRupiah(subtotalSeluruh);
-
-    document.getElementById("textDiskon").innerText = "- " + formatRupiah(diskon);
+    textDiskon.innerText = "- " + formatRupiah(diskon);
     textTotal.innerText = formatRupiah(totalAkhir);
 }
