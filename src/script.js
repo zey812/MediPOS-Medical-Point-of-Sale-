@@ -14,6 +14,7 @@ const displayNama = document.getElementById("displayNamaPembeli");
 const tbodyTransaksi = document.getElementById("tabelTransaksi");
 const textSubtotal = document.getElementById("textSubtotal");
 const textTotal = document.getElementById("textTotal");
+const textDiskon = document.getElementById("textDiskon");
 
 const formatRupiah = (angka) => "Rp " + angka.toLocaleString("id-ID");
 
@@ -56,4 +57,34 @@ function renderKeranjang() {
 
     textSubtotal.innerText = formatRupiah(subtotalSeluruh);
     textTotal.innerText = formatRupiah(subtotalSeluruh);
+}
+
+function renderKeranjang() {
+    tbodyTransaksi.innerHTML = ""; 
+    let subtotalSeluruh = 0;
+    
+    keranjang.forEach((item) => {
+        subtotalSeluruh += item.subtotal;
+        tbodyTransaksi.innerHTML += `
+            <tr>
+                <td class="text-start fw-medium">${item.nama}</td>
+                <td>${formatRupiah(item.harga)}</td>
+                <td>${item.jumlah}</td>
+                <td class="fw-bold">${formatRupiah(item.subtotal)}</td>
+                <td><button class="btn btn-sm btn-outline-success disabled"><i class="bi bi-check"></i></button></td>
+            </tr>
+        `;
+    });
+
+    let diskon = 0;
+    if (subtotalSeluruh > 100000) {
+        diskon = subtotalSeluruh * 0.1; 
+    }
+
+    let totalAkhir = subtotalSeluruh - diskon;
+
+    textSubtotal.innerText = formatRupiah(subtotalSeluruh);
+
+    document.getElementById("textDiskon").innerText = "- " + formatRupiah(diskon);
+    textTotal.innerText = formatRupiah(totalAkhir);
 }
