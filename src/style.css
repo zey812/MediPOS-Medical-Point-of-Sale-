@@ -1,0 +1,68 @@
+/* Custom CSS Premium untuk MediPOS */
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background-color: #f4f7f6; 
+    color: #2c3e50;
+}
+
+/* Tema Warna Gradien Medis */
+.bg-gradient-medical {
+    background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+}
+.text-medical { color: #0083b0; }
+
+/* Styling Cards dengan Efek Hover Kekinian */
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+.card-obat {
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.card-obat:hover {
+    transform: translateY(-8px);
+    border-color: #00b4db;
+    box-shadow: 0 10px 25px rgba(0, 180, 219, 0.2);
+}
+
+/* Ikon Lingkaran untuk Katalog Obat */
+.icon-circle {
+    width: 55px;
+    height: 55px;
+    background-color: #e0f7fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #0083b0;
+    margin: 0 auto 15px auto;
+}
+
+/* Styling Tombol Custom */
+.btn-custom {
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+.btn-custom:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+    color: white;
+}
+
+/* Merapikan Tabel */
+.table th {
+    background-color: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+}
+.table td { vertical-align: middle; }
