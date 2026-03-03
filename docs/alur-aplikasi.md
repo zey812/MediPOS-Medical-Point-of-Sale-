@@ -22,6 +22,7 @@ MediPOS/
 │   └── style.css
 ├── tests/        → file pengujian
 └── README.md     → dokumentasi umum
+
 ## Alur Penggunaan Aplikasi
 
 ### 1. Melihat Katalog Obat
